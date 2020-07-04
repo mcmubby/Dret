@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DretBlog.Data.DatabaseContexts.ApplicationDbContext;
+using DretBlog.Data.DatabaseContexts.AuthenticationDbContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +26,21 @@ namespace DretBlog.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<ApplicationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("ApplicationConnection"),
+                SqlServerOptions =>{
+                    SqlServerOptions.MigrationsAssembly("DretBlog.Data");
+                }
+                )
+            );
+
+            services.AddDbContextPool<AuthenticationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("AuthenticationConnection"),
+                SqlServerOptions =>{
+                    SqlServerOptions.MigrationsAssembly("DretBlog.Data");
+                })
+            );
+            
             services.AddControllersWithViews();
         }
 
@@ -44,6 +62,7 @@ namespace DretBlog.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
