@@ -4,9 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using DretBlog.Data.DatabaseContexts.ApplicationDbContext;
 using DretBlog.Data.DatabaseContexts.AuthenticationDbContext;
+using DretBlog.Data.Entities;
+using DretBlog.Web.Interfaces;
+using DretBlog.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +44,25 @@ namespace DretBlog.Web
                     SqlServerOptions.MigrationsAssembly("DretBlog.Data");
                 })
             );
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<AuthenticationDbContext>()
+            .AddDefaultTokenProviders();
             
+            //delibrate password weakening
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase= false;
+
+            });
+            
+            services.AddTransient<IAccountsServices, AccountsServices>();
+
             services.AddControllersWithViews();
         }
 
