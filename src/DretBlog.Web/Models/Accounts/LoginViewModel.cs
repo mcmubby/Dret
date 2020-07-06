@@ -3,15 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DretBlog.Web.Models.Accounts
 {
-    public class RegisterViewModel
+    public class LoginViewModel
     {
-        [Required]
-        [DisplayName("Fullname")]
-        public string FullName { get; set; }
-
+        
         [EmailAddress]
         [Required]
-        [DisplayName("Email Address")]
+        [DisplayName("Email address")]
         public string Email { get; set; }
         
         [Required]
@@ -19,10 +16,6 @@ namespace DretBlog.Web.Models.Accounts
         [DisplayName("Password")]
         public string Password { get; set; }
 
-        [Required]
-        [Compare("Password")]
-        [DataType(DataType.Password)]
-        [DisplayName("Confirm Password")]
-        public string ConfirmPassword { get; set; }
+    
     }
 }

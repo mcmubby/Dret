@@ -30,7 +30,7 @@ namespace DretBlog.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            //error report didn.t work
+            
             if(!ModelState.IsValid) return View();
             try
             {
@@ -46,6 +46,44 @@ namespace DretBlog.Web.Controllers
             }
             
             
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if(!ModelState.IsValid) return View();
+
+            try
+            {
+                var signin = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                if (!signin.Succeeded)
+                {
+                    ModelState.AddModelError(" ","Login failed, check your details");
+                    return View();
+                }
+                return LocalRedirect("~/");
+
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e.Message);
+                return View();
+                
+            }
+            
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return LocalRedirect("~/");
         }
     }
 }
