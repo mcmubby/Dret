@@ -1,0 +1,27 @@
+@model DretBlog.Web.Models.Accounts.LoginViewModel
+
+<div class="col-md-6">
+    <div class="box-for overflow">
+        <div class="col-md-12 col-xs-12 register-blocks">
+           
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input type="email" class="form-control" asp-for="Email" required>
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input type="password" class="form-control" asp-for="Password" required>
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-default">Signin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

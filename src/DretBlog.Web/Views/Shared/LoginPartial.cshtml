@@ -14,20 +14,7 @@
         <li><a class="btn btn-primary" href="#">Logout, @name</a>
         </li>
     </ul>*/
-    <div class="header__chooseLanguage">
-										
-										<!-- dropdown -->
-										<div class="dropdown" data-init="dropdown"><a class="dropdown__toggle" href="javascript:void(0)">EN <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-											<div class="dropdown__content" data-position="right">
-												<ul class="list-style-none">
-													<li><a href="#">EN</a></li>
-													<li><a href="#">DE</a></li>
-													<li><a href="#">VI</a></li>
-												</ul>
-											</div>
-										</div><!-- End / dropdown -->
-										
-						</div>
+    
     <ul class="consult-menu">
     <li class="menu-item-has-children"><a href="#"> @name </a>
 		<ul class="sub-menu">
@@ -35,7 +22,7 @@
 									</li>
 									<li><a href="#">Dashboard</a>
 									</li>
-									<li><a asp-action="Logout" asp-controller="Accounts" >Typography</a>
+									<li><a asp-action="Logout" asp-controller="Accounts" >Sign out</a>
 									</li>
 		</ul>
 	</li>
@@ -46,7 +33,7 @@ else
     <ul class="consult-menu">
         <li class=""><a href="index.html">Subscribe</a>
         </li>
-        <li><a href="about.html">Sign in</a>
+        <li><a asp-controller = "Accounts" asp-action = "Login" >Sign in</a>
         </li>
         <li><a class="btn btn-primary" href="#">Get Started</a>
         </li>
