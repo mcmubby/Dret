@@ -3725,6 +3725,11 @@ mark, .mark {
     transition: background ease .3s;
 }
 
+.space {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 .header .container {
     position: relative;
 }
