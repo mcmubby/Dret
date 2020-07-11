@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DretBlog.Web.Controllers
 {
-    public class TestController : Controller
+    public class DashboardController : Controller
     {
         public IActionResult Index()
         {

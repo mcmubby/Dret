@@ -37,7 +37,7 @@ namespace DretBlog.Web.Controllers
                 var user = await _accountsServices.CreateUserAsync(model);
                 await _signInManager.SignInAsync(user, false);
                 //redirect to dashboard later not home
-                return LocalRedirect("~/");   
+                return LocalRedirect("~/Dashboard");   
             }
             catch (Exception e)
             {
@@ -67,7 +67,7 @@ namespace DretBlog.Web.Controllers
                     ModelState.AddModelError(" ","Login failed, check your details");
                     return View();
                 }
-                return LocalRedirect("~/");
+                return LocalRedirect("~/Dashboard");
 
             }
             catch (Exception e)
