@@ -1,5 +1,6 @@
 @model DretBlog.Web.Models.Posts.PostViewModel
 <div>
-    @Model.Post
+
     <p>Page test</p>
+    @Html.Raw(ViewBag.Poststr)
 </div>

@@ -8,7 +8,8 @@ namespace DretBlog.Web.Controllers
         [HttpGet]
         public IActionResult CreatedPost(PostViewModel model)
         {
-            return View(model);
+            ViewBag.Poststr = model.Post;
+            return View();
         }
     }
 }

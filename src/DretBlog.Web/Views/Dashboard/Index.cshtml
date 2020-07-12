@@ -2,14 +2,14 @@
 <!--removed id="editor" from textarea and id="summit" from summit-->
 <script type="text/javascript" src="~/js/jquery-1.10.2.min.js"></script>
 <div class="container">
-    <div class="row" id="row_style">
-        <h4 class="text-xs-center">Submit new post</h4>
+    
+        
         <form method="POST" asp-action="CreatePost">
         <div class="col-md-4   offset-md-4">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Title">
             </div>
-            <textarea  cols="30" rows="10" asp-for="Post">Submit your text post here...</textarea>
+            <textarea id="editor" class="form-control" asp-for="Post">Submit your text post here...</textarea>
             <br>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Tags">
@@ -19,7 +19,7 @@
             </div>
         </div>
         </form>
-    </div>
+    
 </div>
 
 <style>
