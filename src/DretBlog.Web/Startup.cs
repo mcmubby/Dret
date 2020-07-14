@@ -62,6 +62,7 @@ namespace DretBlog.Web
             });
             
             services.AddTransient<IAccountsServices, AccountsServices>();
+            services.AddScoped<IDashboardServices, DashboardServices>();
 
             services.AddControllersWithViews();
         }

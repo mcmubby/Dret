@@ -12,7 +12,7 @@ namespace DretBlog.Data.Entities
         public int TagId { get; set; }
         public Tags Tags { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

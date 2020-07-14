@@ -1,9 +1,4 @@
 @model DretBlog.Web.Models.Posts.PostViewModel
-<div>
-
-    <p>Page test</p>
-    @Html.Raw(ViewBag.Poststr)
-</div>
 
 <!-- Content-->
 <div class="md-content">
@@ -24,19 +19,19 @@
                         <div class="consult-postDetail__content">
                             <div class="row">
                                 <div class="col-xl-11 offset-0 offset-sm-0 offset-md-0 offset-lg-0 offset-xl-1 ">
-                                    <!--Title position-->
+                                    <!--Title position-->@Html.Raw(ViewBag.Title)
                                     <ul class="consult-postDetail__meta">
                                         <li><i class="fa fa-user" aria-hidden="true"></i> Admin</li>
                                         <li><i class="fa fa-tags" aria-hidden="true"></i>Services    </li>
                                         <li><i class="fa fa-comments-o" aria-hidden="true"></i>Comment</li>
-                                        <li><i class="fa fa-calendar-o" aria-hidden="true"></i>June 25th, 2017</li>
+                                        <li><i class="fa fa-calendar-o" aria-hidden="true"></i>@Html.Raw(ViewBag.CreatedAt)</li>
                                     </ul>
                                     
                                 </div>
                                 
                             </div>
                             <!--Blog content-->
-                            <p>Page test</p>
+                            
                             @Html.Raw(ViewBag.Poststr)
                         </div>
                     </div>

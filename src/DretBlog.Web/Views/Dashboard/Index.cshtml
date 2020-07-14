@@ -7,9 +7,9 @@
         <form method="POST" asp-action="CreatePost">
         <div class="col-md-4   offset-md-4">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Title">
+                <input type="text" class="form-control" asp-for="Title" placeholder="Title">
             </div>
-            <textarea id="editor" class="form-control" asp-for="Post">Submit your text post here...</textarea>
+            <textarea id="editor" class="form-control" asp-for="Content">Submit your text post here...</textarea>
             <br>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Tags">
