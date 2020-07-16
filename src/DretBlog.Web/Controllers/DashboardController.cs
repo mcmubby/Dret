@@ -27,7 +27,7 @@ namespace DretBlog.Web.Controllers
         [HttpPost]
         public IActionResult CreatePost(CreatePostViewModel model)
         {
-            model.UserId = _userManager.GetUserId(User);
+            //model.UserId = _userManager.GetUserId(User);
             var post = _dashboard.CreateNewPostAsync(model);
             return RedirectToAction("CreatedPost", "Post", post);
             

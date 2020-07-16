@@ -1,3 +1,4 @@
+using DretBlog.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DretBlog.Data.DatabaseContexts.ApplicationDbContext
@@ -8,5 +9,10 @@ namespace DretBlog.Data.DatabaseContexts.ApplicationDbContext
         {
             
         }
+
+        //test code
+        
+        public DbSet<Tags> Tag { get; set; }
+        public DbSet<BlogContent> BlogContents { get; set; }
     }
 }

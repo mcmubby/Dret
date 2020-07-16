@@ -10,6 +10,6 @@ namespace DretBlog.Web.Models.Dashboard
         public DateTime CreatedAt { get; set; }
         public int TagId { get; set; }
         
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 }
