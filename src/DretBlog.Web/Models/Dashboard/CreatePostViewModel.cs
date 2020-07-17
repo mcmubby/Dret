@@ -1,4 +1,5 @@
 using System;
+using DretBlog.Data.Entities;
 
 namespace DretBlog.Web.Models.Dashboard
 {
@@ -10,6 +11,8 @@ namespace DretBlog.Web.Models.Dashboard
         public DateTime CreatedAt { get; set; }
         public int TagId { get; set; }
         
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

@@ -10,9 +10,6 @@ namespace DretBlog.Data.DatabaseContexts.ApplicationDbContext
             
         }
 
-        //test code
         
-        public DbSet<Tags> Tag { get; set; }
-        public DbSet<BlogContent> BlogContents { get; set; }
     }
 }
