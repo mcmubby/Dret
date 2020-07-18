@@ -10,5 +10,7 @@ namespace DretBlog.Data.DatabaseContexts.AuthenticationDbContext
         {
             
         }
+
+        public DbSet<BlogContent> BlogContent { get; set; }
     }
 }

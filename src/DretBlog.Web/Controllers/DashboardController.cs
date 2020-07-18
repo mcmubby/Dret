@@ -25,11 +25,15 @@ namespace DretBlog.Web.Controllers
         }
 //scam plenty for the action below. I have no idea what I just wrote???
         [HttpPost]
-        public IActionResult CreatePost(CreatePostViewModel model)
+        public async Task<IActionResult> CreateNewPost(CreatePostViewModel model)
         {
-            model.UserId = _userManager.GetUserId(User);
+            model.ApplicationUser = await _userManager.GetUserAsync(User);
+            model.UserId = model.ApplicationUser.Id;
+            model.Author = model.ApplicationUser.FullName;
             var post = _dashboard.CreateNewPostAsync(model);
-            return RedirectToAction("CreatedPost", "Post", post);
+            // return RedirectToAction("NewPost", "Post", post);
+            return RedirectToAction("NewPost", "Post");
+
             
         }
     }

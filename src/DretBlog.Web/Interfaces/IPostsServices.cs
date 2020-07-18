@@ -1,7 +1,12 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DretBlog.Data.Entities;
+
 namespace DretBlog.Web.Interfaces
 {
-    public class IPostsServices
+    public interface IPostsServices
     {
-        
+        public IEnumerable<BlogContent> GetAll();
+        public BlogContent GetNewPostAsync();
     }
 }

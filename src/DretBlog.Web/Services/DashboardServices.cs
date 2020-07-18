@@ -22,6 +22,7 @@ namespace DretBlog.Web.Services
         public BlogContent CreateNewPostAsync(CreatePostViewModel model)
         {
             var post = new BlogContent{
+                ApplicationUser = model.ApplicationUser,
                 Title = model.Title,
                 Content = model.Content,
                 CreatedAt = DateTime.Now.Date,
