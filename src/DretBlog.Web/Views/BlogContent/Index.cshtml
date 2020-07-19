@@ -1,3 +1,4 @@
+@model DretBlog.Web.Models.Blog.BlogViewModel
 <!-- Content-->
 <div >
 				
@@ -49,6 +50,22 @@
                             <div class="post-01__note">by Cynthia Aguilar</div>
                         </div>
                     </div><!-- End /  -->
+
+                    @foreach (var post in @Model.Posts)
+                    {
+                        <div class="post-01__style-02 md-text-center">
+                        <div class="post-01__media"><a href="blog-detail.html"><img src="assets/img/blogs/1.jpg" alt=""/></a>
+                        </div>
+                        <div>
+                            <ul class="post-01__categories">
+                                <li><a href="#">Business</a></li>
+                            </ul>
+                            <h2 class="post-01__title"><a href="blog-detail.html">@post.Title</a></h2>
+                            <div class="post-01__time">@post.CreatedAt</div>
+                            <div class="post-01__note">by @post.Author</div>
+                        </div>
+                        </div>
+                    }
                     
                     
                     <!-- pagination -->

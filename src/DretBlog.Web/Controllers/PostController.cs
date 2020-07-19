@@ -28,9 +28,6 @@ namespace DretBlog.Web.Controllers
             model.CreatedAt = post.CreatedAt;
             model.Author = CurrentUser.FullName;
             ViewBag.Poststr = model.Content;
-            //ViewBag.Title = model.Title;
-            //ViewBag.CreatedAt = model.CreatedAt.ToString("MM/dd/yyyy");
-            //ViewBag.Author = CurrentUser.FullName;
             return View(model);
         }
     }

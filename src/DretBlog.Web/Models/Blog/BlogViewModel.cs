@@ -1,7 +1,9 @@
+using System.Collections.Generic;
+
 namespace DretBlog.Web.Models.Blog
 {
     public class BlogViewModel
     {
-        //process post created from dashboard
+        public IEnumerable<PostsList> Posts { get; set; }
     }
 }
