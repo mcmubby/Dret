@@ -22,9 +22,11 @@ namespace DretBlog.Web.Services
             return _context.BlogContent;
         }
 
-        public BlogContent GetNewPostAsync()
+        public BlogContent GetNewPostAsync(string UserId)
         {
-            var NewPost = GetAll().LastOrDefault();
+            var NewPost = GetAll()
+            .Where(opt => opt.UserId == UserId)
+            .LastOrDefault();
             return NewPost;
         }
     }

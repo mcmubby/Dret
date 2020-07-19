@@ -7,6 +7,6 @@ namespace DretBlog.Web.Interfaces
     public interface IPostsServices
     {
         public IEnumerable<BlogContent> GetAll();
-        public BlogContent GetNewPostAsync();
+        public BlogContent GetNewPostAsync(string UserId);
     }
 }
