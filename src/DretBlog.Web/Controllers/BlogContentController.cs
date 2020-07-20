@@ -20,8 +20,9 @@ namespace DretBlog.Web.Controllers
             var sortPosts = AllPosts.Select(result => new PostsList
             {
                 Title = result.Title,
+                Author = result.UserId,
                 CreatedAt = result.CreatedAt.ToString("MM/dd/yyyy"),
-                Author = result.UserId
+                
                 
             });
             var model = new BlogViewModel(){

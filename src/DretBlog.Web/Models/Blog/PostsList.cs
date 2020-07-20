@@ -1,3 +1,5 @@
+using DretBlog.Data.Entities;
+
 namespace DretBlog.Web.Models.Blog
 {
     public class PostsList
