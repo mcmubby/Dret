@@ -51,7 +51,7 @@
                         </div>
                     </div><!-- End /  -->
 
-                    @foreach (var post in @Model.Posts)
+                    @foreach (var post in @Model.PagedPost)
                     {
                         <div class="post-01__style-02 md-text-center">
                         <div class="post-01__media"><a href="blog-detail.html"><img src="assets/img/blogs/1.jpg" alt=""/></a>
@@ -71,7 +71,41 @@
                     <!-- pagination -->
                     <ul class="pagination"><a class="pagination__item" href="#">1</a><a class="pagination__item" href="#">2</a><a class="pagination__item" href="#">3</a><span class="pagination__item active">4</span>
                     </ul><!-- End / pagination -->
-                    
+
+                    <!-- pager -->
+                    @if(Model.Pager.Pages.Any())
+                    {
+                        <nav class="table-responsive">
+                            <ul class="pagination justify-content-center d-flex flex-wrap">
+                                @if (Model.Pager.CurrentPage > 1)
+                                {
+                                    <li class="page-item">
+                                    <a class="page-link" href="/Blog/">First</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="/Blog/?p=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                                    </li>
+                                }
+
+                                @foreach (var p in Model.Pager.Pages)
+                                {
+                                    <li class="page-item @(p == Model.Pager.CurrentPage ? "active" : "")">
+                                        <a class="page-link" href="/Blog/?p=@p">@p</a>
+                                    </li>
+                                }
+
+                                @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="/Blog/?p=@(Model.Pager.CurrentPage + 1)">Next</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="/Blog/?p=@(Model.Pager.TotalPages)">Last</a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+                    }
                 </div>
                 <aside class="layout-blog__sidebar">
                         
