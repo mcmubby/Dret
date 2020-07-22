@@ -30,36 +30,16 @@ namespace DretBlog.Web.Controllers
                 
             });
             var model = new BlogViewModel(){
-                Posts = sortPosts,
-                
+                Posts = sortPosts
             };
             
-            var PageSet = SetPage(p,model.Posts);
-            var testpages = Pagination(PageSet,model.Posts);
+            var PageSet = _blogContent.CurrentPageSetter(p,model.Posts);
+            var PagedContent = _blogContent.PageData(PageSet,model.Posts);
             model.Pager = PageSet;
-            model.PagedPost = testpages;
+            model.PagedPost = PagedContent;
 
-            
-
-            // // get pagination info for the current page
-            // Pager = new Pager(dummyItems.Count(), p, PageSize, MaxPages);
-
-            // // assign the current page of items to the Items property
-            // Items = dummyItems.Skip((Pager.CurrentPage - 1) * Pager.PageSize).Take(Pager.PageSize);
             return View(model);
         }
-        public IEnumerable<PostsList> Pagination(Pager Pager, IEnumerable<PostsList> Posts)
-        {
-           var PagedPost = Posts.Skip((Pager.CurrentPage - 1) * Pager.PageSize).Take(Pager.PageSize);
-           return PagedPost;
-        }
-
-        public Pager SetPage(int p, IEnumerable<PostsList> Posts)
-        {
-            var Pager = new Pager(Posts.Count(), p ,5, ((Posts.Count())/5));
-            return Pager;
-        }
-
         
     }
 }

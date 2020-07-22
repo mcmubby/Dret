@@ -5,101 +5,54 @@
     <!-- Section -->
     <section >
         <div class="container">
-            
-            <!-- layout-blog sidebar-left -->
             <div class="layout-blog sidebar-left">
-                <div class="layout-blog__content">
-                    
-                    <!--  -->
-                    <div class="post-01__style-02 md-text-center">
-                        <div class="post-01__media"><a href="blog-detail.html"><img src="assets/img/blogs/1.jpg" alt=""/></a>
-                        </div>
-                        <div>
-                            <ul class="post-01__categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                            <h2 class="post-01__title"><a href="blog-detail.html">How To Build A Better Website</a></h2>
-                            <div class="post-01__time">Nov 20, 2017</div>
-                            <div class="post-01__note">by Alice Brooks</div>
-                        </div>
-                    </div><!-- End /  -->
-                    
-                    
-                    <!--  -->
-                    <div class="post-01__style-02 md-text-center">
-                        <div class="post-01__media">
-                                
-                                <!-- video -->
-                                <div class="video" data-init="video">
-                                    <iframe src="https://www.youtube.com/embed/pX6nutvtDnI" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-                                    <div class="video-content">
-                                        <div class="video-background" style="background-image: url(assets/img/blogs/2.jpg);"></div>
-                                        <div class="video-inner">
-                                            <div class="video-button"><i class="fa fa-play"></i></div>
-                                        </div>
-                                    </div>
-                                </div><!-- End / video -->
-                                
-                        </div>
-                        <div>
-                            <ul class="post-01__categories">
-                                <li><a href="#">Services</a></li>
-                            </ul>
-                            <h2 class="post-01__title"><a href="blog-detail.html">Design a Perfect Homepage</a></h2>
-                            <div class="post-01__time">Oct 28, 2017</div>
-                            <div class="post-01__note">by Cynthia Aguilar</div>
-                        </div>
-                    </div><!-- End /  -->
-
+				<div class="layout-blog__content">
+            
                     @foreach (var post in @Model.PagedPost)
                     {
-                        <div class="post-01__style-02 md-text-center">
-                        <div class="post-01__media"><a href="blog-detail.html"><img src="assets/img/blogs/1.jpg" alt=""/></a>
-                        </div>
-                        <div>
-                            <ul class="post-01__categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                            <h2 class="post-01__title"><a href="blog-detail.html">@post.Title</a></h2>
-                            <div class="post-01__time">@post.CreatedAt</div>
-                            <div class="post-01__note">by @post.Author</div>
-                        </div>
+                        
+                        <div class="card md-text-center" style="margin-bottom: 50px; background-color: #fbfbfb">
+                            <div class="card-body">
+                                
+                                <h2 class="card-title post-01__title"><a href="blog-detail.html">@post.Title</a></h2>
+                                <div class="post-01__time">@post.CreatedAt</div>
+                                <div class="post-01__note">by @post.Author</div>
+                                <ul class="card-subtitle card-link post-01__categories">
+                                    <li><a href="#">Business</a></li>
+                                </ul>
+                                
+                            </div>
                         </div>
                     }
-                    
-                    
-                    <!-- pagination -->
-                    <ul class="pagination"><a class="pagination__item" href="#">1</a><a class="pagination__item" href="#">2</a><a class="pagination__item" href="#">3</a><span class="pagination__item active">4</span>
-                    </ul><!-- End / pagination -->
+
+
 
                     <!-- pager -->
                     @if(Model.Pager.Pages.Any())
                     {
-                        <nav class="table-responsive">
-                            <ul class="pagination justify-content-center d-flex flex-wrap">
+                        <nav class="table-responsive" style="color: black;">
+                            <ul class="pagination">
                                 @if (Model.Pager.CurrentPage > 1)
                                 {
-                                    <li class="page-item">
+                                    <li class="pagination__item">
                                     <a class="page-link" href="/Blog/">First</a>
                                     </li>
-                                    <li class="page-item">
+                                    <li class="pagination__item">
                                         <a class="page-link" href="/Blog/?p=@(Model.Pager.CurrentPage - 1)">Previous</a>
                                     </li>
                                 }
-
                                 @foreach (var p in Model.Pager.Pages)
                                 {
-                                    <li class="page-item @(p == Model.Pager.CurrentPage ? "active" : "")">
+                                    <li class="pagination__item @(p == Model.Pager.CurrentPage ? "active" : "")">
                                         <a class="page-link" href="/Blog/?p=@p">@p</a>
                                     </li>
                                 }
-
                                 @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
                                 {
-                                    <li class="page-item">
+                                    <li class="pagination__item">
                                         <a class="page-link" href="/Blog/?p=@(Model.Pager.CurrentPage + 1)">Next</a>
                                     </li>
-                                    <li class="page-item">
+                                    <li class="pagination__item">
                                         <a class="page-link" href="/Blog/?p=@(Model.Pager.TotalPages)">Last</a>
                                     </li>
                                 }
@@ -108,57 +61,57 @@
                     }
                 </div>
                 <aside class="layout-blog__sidebar">
-                        
-                        <!--  -->
-                        <div>
+
+                    
+                    <div>
                             
-                            <!-- widget-text__widget -->
-                            <section class="widget-text__widget widget-text__style-02 widget">
-                                <h3 class="widget-title">categories</h3>
-                                <div class="widget-text__content">
-                                    <ul>
-                                        <li><a href="#">Accounting</a></li>
-                                        <li><a href="#">Budgets</a></li>
-                                        <li><a href="#">Business</a></li>
-                                        <li><a href="#">Business Plans</a></li>
-                                        <li><a href="#">Commodities</a></li>
-                                        <li><a href="#">Insurance</a></li>
-                                    </ul>
-                                </div>
-                            </section><!-- End / widget-text__widget -->
-                            
-                            
-                            <!-- widget-text__widget -->
-                            <section class="widget-text__widget widget-text__style-04 widget">
-                                <h3 class="widget-title">recent post</h3>
-                                <div class="widget-text__content">
-                                    
-                                    <!--  -->
-                                    <div class="post-01__style-03">
-                                        <div>
-                                            <h2 class="post-01__title"><a href="#">Design a Perfect Homepage</a></h2>
-                                            <div class="post-01__time">Oct 26, 2017</div>
-                                            <div class="post-01__note">by Alice Brooks</div>
-                                        </div>
-                                    </div><!-- End /  -->
-                                    
-                                </div>
-                            </section><!-- End / widget-text__widget -->
+                        <!-- widget-text__widget -->
+                        <section class="widget-text__widget widget-text__style-02 widget">
+                            <h3 class="widget-title">categories</h3>
+                            <div class="widget-text__content">
+                                <ul>
+                                    <li><a href="#">Accounting</a></li>
+                                    <li><a href="#">Budgets</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Business Plans</a></li>
+                                    <li><a href="#">Commodities</a></li>
+                                    <li><a href="#">Insurance</a></li>
+                                </ul>
+                            </div>
+                        </section><!-- End / widget-text__widget -->
                             
                             
-                            <!-- widget-text__widget -->
-                            <section class="widget-text__widget widget">
-                                <h3 class="widget-title">popular tags</h3>
-                                <div class="widget-text__content">
-                                    
-                                    <!-- tagclould -->
-                                    <div class="tagclould"><a href="#">Accounting</a><a href="#">Budgets</a><a href="#">Business</a><a href="#">Business</a><a href="#">Plans</a><a href="#">Commodities</a><a href="#">Insurance</a><a href="#">Consulting</a>
-                                    </div><!-- End /  tagclould -->
-                                    
-                                </div>
-                            </section><!-- End / widget-text__widget -->
+                        <!-- widget-text__widget -->
+                        <section class="widget-text__widget widget-text__style-04 widget">
+                            <h3 class="widget-title">recent post</h3>
+                            <div class="widget-text__content">
+                                
+                                <!--  -->
+                                <div class="post-01__style-03">
+                                    <div>
+                                        <h2 class="post-01__title"><a href="#">Design a Perfect Homepage</a></h2>
+                                        <div class="post-01__time">Oct 26, 2017</div>
+                                        <div class="post-01__note">by Alice Brooks</div>
+                                    </div>
+                                </div><!-- End /  -->
+                                
+                            </div>
+                        </section><!-- End / widget-text__widget -->
+                            
+                            
+                        <!-- widget-text__widget -->
+                        <section class="widget-text__widget widget">
+                            <h3 class="widget-title">popular tags</h3>
+                            <div class="widget-text__content">
+                                
+                                <!-- tagclould -->
+                                <div class="tagclould"><a href="#">Accounting</a><a href="#">Budgets</a><a href="#">Business</a><a href="#">Business</a><a href="#">Plans</a><a href="#">Commodities</a><a href="#">Insurance</a><a href="#">Consulting</a>
+                                </div><!-- End /  tagclould -->
+                                
+                            </div>
+                        </section><!-- End / widget-text__widget -->
                                                         
-                        </div><!-- End /  -->
+                    </div><!-- End /  -->
                         
                 </aside>
             </div><!-- End / layout-blog sidebar-left -->
