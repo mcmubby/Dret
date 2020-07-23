@@ -26,7 +26,7 @@ namespace DretBlog.Web.Services
         public IEnumerable<BlogContent> GetAll()
         {
             
-            return _context.BlogContent.Select(opt=> new BlogContent{Title = opt.Title, CreatedAt=opt.CreatedAt, UserId = opt.ApplicationUser.FullName, });
+            return _context.BlogContent.Select(opt=> new BlogContent{Id = opt.Id, Title = opt.Title, CreatedAt=opt.CreatedAt, UserId = opt.ApplicationUser.FullName, });
             //return result as IEnumerable<BlogContent>;
             //context.Devices.Where(your conditions here)
             //.Select(d=>new {Id = d.id, Name = d.Name, DeviceTypeName = d.DeviceType.Name});

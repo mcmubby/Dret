@@ -26,7 +26,7 @@ namespace DretBlog.Web.Controllers
                 Title = result.Title,
                 Author = result.UserId,
                 CreatedAt = result.CreatedAt.ToString("MM/dd/yyyy"),
-                
+                Id = result.Id
                 
             });
             var model = new BlogViewModel(){

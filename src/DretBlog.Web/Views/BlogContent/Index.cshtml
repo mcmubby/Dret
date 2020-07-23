@@ -14,7 +14,7 @@
                         <div class="card md-text-center" style="margin-bottom: 50px; background-color: #fbfbfb">
                             <div class="card-body">
                                 
-                                <h2 class="card-title post-01__title"><a href="blog-detail.html">@post.Title</a></h2>
+                                <h2 class="card-title post-01__title"><a asp-controller="Post" asp-action="GetPost" asp-route-id="@post.Id">@post.Title</a></h2>
                                 <div class="post-01__time">@post.CreatedAt</div>
                                 <div class="post-01__note">by @post.Author</div>
                                 <ul class="card-subtitle card-link post-01__categories">

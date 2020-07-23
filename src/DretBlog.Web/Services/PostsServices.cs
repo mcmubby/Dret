@@ -22,6 +22,12 @@ namespace DretBlog.Web.Services
             return _context.BlogContent;
         }
 
+        public BlogContent GetById(int id)
+        {
+            return GetAll()
+            .FirstOrDefault(post => post.Id == id);
+        }
+
         public BlogContent GetNewPostAsync(string UserId)
         {
             var NewPost = GetAll()

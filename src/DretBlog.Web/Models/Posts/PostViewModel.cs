@@ -11,5 +11,6 @@ namespace DretBlog.Web.Models.Posts
         
         public string Author { get; set; }
         public string UserId { get; set; }
+        public int Id { get; set; }
     }
 }

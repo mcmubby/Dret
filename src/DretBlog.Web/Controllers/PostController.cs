@@ -30,5 +30,19 @@ namespace DretBlog.Web.Controllers
             ViewBag.Poststr = model.Content;
             return View(model);
         }
+
+        public IActionResult GetPost(int id, PostViewModel model)
+        {
+            var result = _postservice.GetById(id);
+            model.Title = result.Title;
+            model.Content = result.Content;
+            model.CreatedAt = result.CreatedAt;
+            //fix username
+            model.Author = result.UserId;
+            model.Id = result.Id;
+            
+            ViewBag.Poststr = model.Content;
+            return View(model);
+        }
     }
 }
