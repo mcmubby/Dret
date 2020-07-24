@@ -9,5 +9,6 @@ namespace DretBlog.Web.Interfaces
         public IEnumerable<BlogContent> GetAll();
         public BlogContent GetNewPostAsync(string UserId);
         public BlogContent GetById(int id);
+        public string GetAuthor(string UserId);
     }
 }

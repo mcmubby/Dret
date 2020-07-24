@@ -1,5 +1,5 @@
 @model DretBlog.Web.Models.Dashboard.CreatePostViewModel
-<!--removed id="editor" from textarea and id="summit" from summit-->
+@* <!--removed id="editor" from textarea and id="summit" from summit-->
 <script type="text/javascript" src="~/js/jquery-1.10.2.min.js"></script>
 <div class="container">
     
@@ -20,7 +20,71 @@
         </div>
         </form>
     
+</div> *@
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-3">
+            <h6 class="my-4">UserName</h6>
+        
+        </div>
+      <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3 class="card-title">Create post</h3>
+                    <form method="POST" asp-action="CreateNewPost">
+                        <div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Title">
+                            </div>
+                            <div>
+                                <textarea id="editor" class="form-control" asp-for="Content">Submit your text post here...</textarea>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Tags">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Submit new post</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!-- /.card -->
+
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Your Post(s)
+                </div>
+                <div class="card-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                    <hr>
+                    
+                </div>
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+    </div>
+
 </div>
+<!-- /.container -->
 
 <style>
     #row_style {
@@ -41,7 +105,8 @@
 <script type="text/javascript">
     jQuery(function ($) {
         $("#editor").shieldEditor({
-            height: 300
+            height: 300,
+            width:100,
         });
     });
 </script>

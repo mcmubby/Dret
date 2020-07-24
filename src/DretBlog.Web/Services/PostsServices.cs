@@ -22,6 +22,12 @@ namespace DretBlog.Web.Services
             return _context.BlogContent;
         }
 
+        public string GetAuthor(string UserId)
+        {
+            return _context.Users
+            .FirstOrDefault(opt => opt.Id == UserId).FullName;
+        }
+
         public BlogContent GetById(int id)
         {
             return GetAll()

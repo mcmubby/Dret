@@ -37,8 +37,9 @@ namespace DretBlog.Web.Controllers
             model.Title = result.Title;
             model.Content = result.Content;
             model.CreatedAt = result.CreatedAt;
+            model.UserId = result.UserId;
             //fix username
-            model.Author = result.UserId;
+            model.Author = _postservice.GetAuthor(model.UserId);
             model.Id = result.Id;
             
             ViewBag.Poststr = model.Content;
