@@ -31,6 +31,7 @@ namespace DretBlog.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult GetPost(int id, PostViewModel model)
         {
             var result = _postservice.GetById(id);

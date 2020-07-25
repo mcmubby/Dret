@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using DretBlog.Data.Entities;
 using DretBlog.Web.Interfaces;
@@ -12,6 +13,7 @@ namespace DretBlog.Web.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IDashboardServices _dashboard;
 
+        
         public DashboardController(UserManager<ApplicationUser> userManager,
             IDashboardServices dashboard)
         {
@@ -19,22 +21,26 @@ namespace DretBlog.Web.Controllers
             _dashboard = dashboard;
         }
         [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
-//scam plenty for the action below. I have no idea what I just wrote???
-        [HttpPost]
-        public async Task<IActionResult> CreateNewPost(CreatePostViewModel model)
+        public async Task<IActionResult> Index(CreatePostViewModel model)
         {
             model.ApplicationUser = await _userManager.GetUserAsync(User);
             model.UserId = model.ApplicationUser.Id;
-            model.Author = model.ApplicationUser.FullName;
-            var post = _dashboard.CreateNewPostAsync(model);
-            // return RedirectToAction("NewPost", "Post", post);
-            return RedirectToAction("NewPost", "Post");
+            var UserPostDetails = _dashboard.GetUserPost(model.UserId);
+            var sortTitle = UserPostDetails.Select(result => new UserTitles{
+                Title = result.Title,
+                CreatedAt = result.CreatedAt
+            });
+            model.UserPostTitles = sortTitle;
+            return View(model);
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateNewPost(CreatePostViewModel model)
+        {   
+            model.ApplicationUser = await _userManager.GetUserAsync(User);
+            var post = _dashboard.CreateNewPostAsync(model);
             
+            return RedirectToAction("NewPost", "Post");
         }
     }
 }

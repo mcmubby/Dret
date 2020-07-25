@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DretBlog.Data.DatabaseContexts.AuthenticationDbContext;
 using DretBlog.Data.Entities;
@@ -26,13 +28,20 @@ namespace DretBlog.Web.Services
                 Title = model.Title,
                 Content = model.Content,
                 CreatedAt = DateTime.Now.Date,
-                UserId = model.UserId,
+                UserId = model.ApplicationUser.Id,
                 TagId = 1,
             };
             _context.Add(post);
             _context.SaveChanges();
 
             return post;
+        }
+
+        public IEnumerable<BlogContent> GetUserPost(string UserId)
+        {
+            return _context.BlogContent
+            .Where(opt => opt.UserId == UserId);
+            
         }
     }
 }
