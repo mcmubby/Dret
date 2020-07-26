@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DretBlog.Web.Controllers
 {
+    [Route("/account/{action}")]
     public class AccountsController : Controller
     {
         

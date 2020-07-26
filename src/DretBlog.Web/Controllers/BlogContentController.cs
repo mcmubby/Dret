@@ -3,10 +3,12 @@ using System.Linq;
 using DretBlog.Web.Interfaces;
 using DretBlog.Web.Models.Blog;
 using JW;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DretBlog.Web.Controllers
 {
+    [Authorize]
     [Route("/Blog")]
     public class BlogContentController : Controller
     {

@@ -27,7 +27,7 @@ namespace DretBlog.Web.Services
                 ApplicationUser = model.ApplicationUser,
                 Title = model.Title,
                 Content = model.Content,
-                CreatedAt = DateTime.Now.Date,
+                CreatedAt = DateTime.Now,
                 UserId = model.ApplicationUser.Id,
                 TagId = 1,
             };
@@ -40,7 +40,8 @@ namespace DretBlog.Web.Services
         public IEnumerable<BlogContent> GetUserPost(string UserId)
         {
             return _context.BlogContent
-            .Where(opt => opt.UserId == UserId);
+            .Where(opt => opt.UserId == UserId)
+            .OrderByDescending(opt => opt.CreatedAt);
             
         }
     }

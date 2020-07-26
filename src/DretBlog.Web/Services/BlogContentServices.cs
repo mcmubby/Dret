@@ -26,10 +26,14 @@ namespace DretBlog.Web.Services
         public IEnumerable<BlogContent> GetAll()
         {
             
-            return _context.BlogContent.Select(opt=> new BlogContent{Id = opt.Id, Title = opt.Title, CreatedAt=opt.CreatedAt, UserId = opt.ApplicationUser.FullName, });
-            //return result as IEnumerable<BlogContent>;
-            //context.Devices.Where(your conditions here)
-            //.Select(d=>new {Id = d.id, Name = d.Name, DeviceTypeName = d.DeviceType.Name});
+            return _context.BlogContent
+            .Select(opt=> new BlogContent{
+                Id = opt.Id, 
+                Title = opt.Title, 
+                CreatedAt=opt.CreatedAt, 
+                UserId = opt.ApplicationUser.FullName
+            }).OrderByDescending(opt => opt.CreatedAt);
+            
         }
 
         public IEnumerable<PostsList> PageData(Pager Pager, IEnumerable<PostsList> Posts)
@@ -37,5 +41,6 @@ namespace DretBlog.Web.Services
             var PagedPost = Posts.Skip((Pager.CurrentPage - 1) * Pager.PageSize).Take(Pager.PageSize);
             return PagedPost;
         }
+        
     }
 }
