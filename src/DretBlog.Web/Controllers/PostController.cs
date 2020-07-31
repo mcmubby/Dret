@@ -20,20 +20,7 @@ namespace DretBlog.Web.Controllers
             _postservice = postservice;
             _userManager = userManager;
         }
-        [HttpGet]
-        //[Route("/{controller}/{id}")]
-        public async Task<IActionResult> NewPost(PostViewModel model)
-        {
-            var CurrentUser = await _userManager.GetUserAsync(User);
-            var post = _postservice.GetNewPostAsync(CurrentUser.Id);
-            model.Content = post.Content ;
-            model.Title = post.Title;
-            model.CreatedAt = post.CreatedAt;
-            model.Author = CurrentUser.FullName;
-            ViewBag.Poststr = model.Content;
-            return View(model);
-        }
-
+        
         [HttpGet]
         [Route("/{controller}/{id}")]
         public IActionResult GetPost(int id)
